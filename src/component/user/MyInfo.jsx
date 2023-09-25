@@ -60,6 +60,7 @@ const MyInfo = () => {
     e.preventDefault();
     if (window.confirm("정보를 수정하시겠습니까?")) {
       console.log(newInput);
+      localStorage.setItem("userName", newInput.userName);
       dispatch(updateUser(newInput));
     }
   };

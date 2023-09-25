@@ -42,7 +42,7 @@ const SignInForm = () => {
   }, [status]);
 
   return (
-    <div className="flex flex-col w-1/3 h-1/2 shadow- rounded-3xl bg-gradient-to-r from-slate-400 to-slate-500 shadow-md">
+    <div className="flex flex-col w-1/3 h-1/2 rounded-3xl bg-gradient-to-r from-blue-gray-400 to-blue-gray-500 shadow-md">
       <form onSubmit={onSubmit} className="p-10">
         {inputArr.map((el) => (
           <div key={el.name} className="flex justify-between mb-5">
@@ -60,7 +60,7 @@ const SignInForm = () => {
           </div>
         ))}
         <div className="flex justify-center">
-          <button className="py-3 px-8 rounded-lg font-bold shadow-md focus:shadow-none bg-zinc-300 hover:bg-zinc-200 hover:text-xl duration-75">
+          <button className="py-3 px-8 rounded-lg font-bold shadow-md focus:shadow-none bg-blue-gray-300 hover:bg-blue-gray-200 hover:text-xl duration-75">
             로그인
           </button>
         </div>
