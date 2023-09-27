@@ -34,7 +34,11 @@ const ChatRoom = () => {
     setStompClient(stomp);
 
     return () => {
-      if (stomp) stomp.disconnect();
+      if (stomp)
+        stomp.disconnect({}, () => {
+          const disconnect = { message: "탈주!!" };
+          stomp.send(`/pub/chat/${chatRoomId}`, {}, JSON.stringify(disconnect));
+        });
     };
   }, [chatRoomId]);
 

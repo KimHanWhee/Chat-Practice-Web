@@ -15,7 +15,7 @@ import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
 const ChatRoomJoin = () => {
-  const { roomData, isJoinOpen, roomStatus, error } = useSelector(
+  const { roomData, isJoinOpen, joinStatus, error } = useSelector(
     (state) => state.chat
   );
   const [request, setRequest] = useState({
@@ -42,7 +42,7 @@ const ChatRoomJoin = () => {
 
   useEffect(() => {
     dispatch(setJoinFalse());
-    if (roomStatus === "successed" && request.chatRoomName !== "") {
+    if (joinStatus === "successed" && request.chatRoomName !== "") {
       alert("채팅방에 참여하였습니다.");
       setRequest({ ...request, chatRoomName: "" });
       navigate(`/chat/${roomData.id}`, {
@@ -51,10 +51,10 @@ const ChatRoomJoin = () => {
           request: request,
         },
       });
-    } else if (roomStatus === "failed" && request.chatRoomName !== "")
+    } else if (joinStatus === "failed" && request.chatRoomName !== "")
       alert(error);
     dispatch(resetStatus());
-  }, [roomStatus]);
+  }, [joinStatus]);
 
   const cancelButtonRef = useRef(null);
 

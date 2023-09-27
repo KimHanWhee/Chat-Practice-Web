@@ -12,7 +12,10 @@ const Header = () => {
   const cookie = new Cookies();
 
   useEffect(() => {
-    if (cookie.get("accessToken") === undefined) dispatch(logout());
+    if (cookie.get("accessToken") === undefined) {
+      dispatch(logout());
+      navigate("/");
+    }
   }, []);
 
   return (
@@ -56,7 +59,7 @@ const Header = () => {
           className="btn btn-ghost normal-case text-xl"
           onClick={() => navigate("/")}
         >
-          Project
+          졸려
         </div>
       </div>
       {cookie.get("accessToken") ? (

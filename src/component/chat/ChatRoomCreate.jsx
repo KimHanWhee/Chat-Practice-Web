@@ -11,7 +11,7 @@ import { useEffect } from "react";
 import { resetStatus } from "../../store/myPage/myPageSlice";
 
 const ChatRoomCreate = ({ page }) => {
-  const { isOpen, roomStatus } = useSelector((state) => state.chat);
+  const { isOpen, createStatus } = useSelector((state) => state.chat);
   const [request, setRequest] = useState({
     chatRoomName: "",
   });
@@ -31,17 +31,17 @@ const ChatRoomCreate = ({ page }) => {
   };
 
   useEffect(() => {
-    if (roomStatus === "successed" && request.chatRoomName !== "") {
+    if (createStatus === "successed" && request.chatRoomName !== "") {
       alert("채팅방이 생성되었습니다.");
       setRequest({ chatRoomName: "" });
       dispatch(getMyRooms(page));
-    } else if (roomStatus === "failed" && request.chatRoomName !== "") {
+    } else if (createStatus === "failed" && request.chatRoomName !== "") {
       alert("채팅방 생성에 실패하였습니다.");
       setRequest({ chatRoomName: "" });
     }
     dispatch(resetStatus());
     dispatch(setFalse());
-  }, [roomStatus]);
+  }, [createStatus]);
 
   console.log(isOpen);
 

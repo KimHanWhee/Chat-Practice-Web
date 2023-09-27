@@ -7,7 +7,8 @@ const initialState = {
   data: [],
   roomData: [],
   status: "idle",
-  roomStatus: "idle",
+  createStatus: "idle",
+  joinStatus: "idle",
   isOpen: false,
   isJoinOpen: false,
   error: "",
@@ -66,20 +67,21 @@ const chatSlice = createSlice({
       state.isJoinOpen = false;
     },
     resetStatus: (state) => {
-      state.roomStatus = "idle";
+      state.createStatus = "idle";
+      state.joinStatus = "idle";
       state.status = "idle";
     },
   },
   extraReducers(builder) {
     builder
       .addCase(createChatRoom.pending, (state, action) => {
-        state.roomStatus = "loading";
+        state.createStatus = "loading";
       })
       .addCase(createChatRoom.fulfilled, (state, action) => {
-        state.roomStatus = "successed";
+        state.createStatus = "successed";
       })
       .addCase(createChatRoom.rejected, (state, action) => {
-        state.roomStatus = "failed";
+        state.createStatus = "failed";
         state.error = action.payload.data;
       })
       .addCase(getMyRooms.pending, (state, action) => {
@@ -95,14 +97,14 @@ const chatSlice = createSlice({
         state.error = action.payload;
       })
       .addCase(joinChatRoom.pending, (state, action) => {
-        state.roomStatus = "loading";
+        state.joinStatus = "loading";
       })
       .addCase(joinChatRoom.fulfilled, (state, action) => {
-        state.roomStatus = "successed";
+        state.joinStatus = "successed";
         state.roomData = action.payload.data;
       })
       .addCase(joinChatRoom.rejected, (state, action) => {
-        state.roomStatus = "failed";
+        state.joinStatus = "failed";
         state.error = action.payload.data;
       });
   },
