@@ -59,7 +59,7 @@ const Header = () => {
           className="btn btn-ghost normal-case text-xl"
           onClick={() => navigate("/")}
         >
-          졸려
+          채팅
         </div>
       </div>
       {cookie.get("accessToken") ? (

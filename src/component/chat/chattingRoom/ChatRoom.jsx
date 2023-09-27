@@ -68,8 +68,11 @@ const ChatRoom = () => {
   };
 
   return (
-    <div className="flex flex-col h-screen overflow-auto items-center pt-48">
-      <div className="w-1/2 flex-grow">
+    <div className="flex flex-col h-screen overflow-auto items-center">
+      <div className="border border-black w-full text-center h-10 font-bold">
+        {state.chatRoomName}
+      </div>
+      <div className="w-1/2 flex-grow pt-48">
         <div>
           {message.map((el, idx) => (
             <div>

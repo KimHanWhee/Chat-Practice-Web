@@ -8,8 +8,10 @@ export const useScroll = () => {
     setScroll({ x: window.scrollX, y: window.scrollY });
   };
 
-  useEffect(window.addEventListener("scroll", settingScroll));
-  return () => window.removeEventListener("scroll", settingScroll);
+  useEffect(() => {
+    window.addEventListener("scroll", settingScroll);
+    return () => window.removeEventListener("scroll", settingScroll);
+  }, []);
 
   return scroll;
 };

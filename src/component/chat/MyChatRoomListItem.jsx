@@ -18,10 +18,14 @@ const MyChatRoomListItem = ({
       <td
         className="px-6 py-4 text-lg hover:cursor-pointer"
         onClick={() => {
-          navigate(`/chat/${chatRoomId}`, { state: { type: "채팅하러왔다" } });
+          navigate(`/chat/${chatRoomId}`, {
+            state: { type: "채팅하러왔다", chatRoomName: chatRoomName },
+          });
         }}
       >
-        {chatRoomName}
+        {chatRoomName.length > 10
+          ? chatRoomName.substring(0, 10) + "..."
+          : chatRoomName}
       </td>
       <td className="px-6 py-4 text-lg">{creatorName}</td>
       <td className="px-6 py-4 text-lg">{createdAt}</td>

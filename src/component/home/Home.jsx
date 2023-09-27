@@ -17,6 +17,7 @@ const Home = () => {
   const [page, setPage] = useState(0);
 
   const dispatch = useDispatch();
+  const scroll = useScroll();
 
   const createChatRoom = () => {
     dispatch(setTrue());
@@ -33,7 +34,7 @@ const Home = () => {
       <ChatRoomCreate page={page} />
       <ChatRoomJoin />
       {cookie.get("accessToken") ? (
-        <div className="flex flex-col justify-between h-full">
+        <div className="flex flex-col justify-between h-full min-w-40">
           {data?.content?.length !== 0 ? (
             <MyChatRoomList data={data} />
           ) : (
@@ -43,15 +44,15 @@ const Home = () => {
             </div>
           )}
           <div className="flex justify-center">
-            <div className="flex justify-between mb-5 w-5/6">
+            <div className="flex justify-between mb-5 w-1/2 ">
               <button
-                className="py-3 px-8 rounded-lg font-bold shadow-md focus:shadow-none bg-zinc-400 hover:bg-zinc-200 hover:text-xl duration-75"
+                className="py-3 px-8 rounded-lg font-bold shadow-md focus:shadow-none bg-teal-400 hover:bg-teal-200 hover:text-xl duration-75"
                 onClick={createChatRoom}
               >
                 채팅방 생성
               </button>
               <button
-                className="py-3 px-8 rounded-lg font-bold shadow-md focus:shadow-none bg-slate-400 hover:bg-slate-200 hover:text-xl duration-75"
+                className="py-3 px-8 rounded-lg font-bold shadow-md focus:shadow-none bg-light-blue-400 hover:bg-light-blue200 hover:text-xl duration-75"
                 onClick={joinChatRoom}
               >
                 채팅방 참여

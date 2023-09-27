@@ -1,7 +1,5 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { api } from "../../api/api";
-import SockJS from "sockjs-client";
-import { Stomp } from "@stomp/stompjs";
 
 const initialState = {
   data: [],

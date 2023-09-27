@@ -49,6 +49,7 @@ const ChatRoomJoin = () => {
         state: {
           type: "들어간다~~",
           request: request,
+          chatRoomName: request.chatRoomName,
         },
       });
     } else if (joinStatus === "failed" && request.chatRoomName !== "")
